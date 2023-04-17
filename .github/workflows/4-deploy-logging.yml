@@ -6,6 +6,10 @@ on:
       Subscription_Id:
         required: true
         type: string
+    outputs:
+      LogAnalyticsWorkspaceId:
+        description: 'Resource ID of the Wookiees Management Group'
+        value: ${{ jobs.deploy-central-logging.outputs.LogAnalyticsWorkspaceId }}
 
 jobs:
   deploy-central-logging:
@@ -45,3 +49,6 @@ jobs:
           resourceGroupName: ${{ steps.resourceGroupLogging.outputs.resourceGroupName }}
           template: modules/logging/logging.bicep
           parameters: modules/logging/parameters/logging.parameters.all.json
+    outputs:
+      LogAnalyticsWorkspaceId: ${{ steps.deployCentralLogging.outputs.outLogAnalyticsWorkspaceId }}
+      
