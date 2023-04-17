@@ -67,8 +67,8 @@ jobs:
         with:
           scope: managementgroup
           region: westeurope
-          managementgroupid: ${{ inputs.Wookiees_MG_Resource_Id }}
+          managementgroupid: ${{ inputs.Top_Management_Group_Id }}
           template: modules/policy/definitions/customPolicyDefinitions.bicep
           parameters: >
             modules/policy/definitions/parameters/customPolicyDefinitions.parameters.all.json
-            parTargetManagementGroupId="${{ inputs.Wookiees_MG_Resource_Id }}"
+            parTargetManagementGroupId="${{ inputs.Top_Management_Group_Id }}"
