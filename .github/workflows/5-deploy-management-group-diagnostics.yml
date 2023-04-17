@@ -9,6 +9,9 @@ on:
       TopLevelManagementGroupPrefix:
         required: true
         type: string
+      LogAnalyticsWorkspaceResourceId:
+        required: true
+        type: string
 
 jobs:
   deploy-central-logging:
@@ -50,5 +53,4 @@ jobs:
           parameters: >
             orchestration/mgDiagSettingsAll.parameters.all.json
             parTopLevelManagementGroupPrefix=${{ inputs.TopLevelManagementGroupPrefix }}
-            parLogAnalyticsWorkspaceResourceId="/subscriptions/${{ inputs.Subscription_Id }}/resourcegroups/alz-logging/providers/microsoft.operationalinsights/workspaces/alz-log-analytics"
-            
+            parLogAnalyticsWorkspaceResourceId=${{ inputs.LogAnalyticsWorkspaceResourceId}}
