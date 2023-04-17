@@ -81,7 +81,7 @@ jobs:
         run: |
           ./modules/managementGroups/process-management-groups-structure.ps1
           # Delete All Management Groups
-          $toplevelgroup = Get-AzManagementGroup -GroupName 'Wookies' -Expand -Recurse
+          $toplevelgroup = Get-AzManagementGroup -GroupName 'Wookiees' -Expand -Recurse
           $children = $toplevelgroup.Children
           $grandchildren = $toplevelgroup.Children.Children
           foreach ($grandchild in $grandchildren) {
