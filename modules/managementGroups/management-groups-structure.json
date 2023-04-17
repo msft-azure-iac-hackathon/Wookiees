@@ -20,16 +20,19 @@
                     "id": "b57f9a00-fde7-4785-950d-b9c9b7de9f42",
                     "type": "managementGroup",
                     "name": "Identity",
-                    "children": [
-                        
-                    ]
+                    "children": []
                 },
                 {
                     "id": "ceae02aa-b390-44b3-ace6-5d18e86e4875",
                     "type": "managementGroup",
                     "name": "Management",
                     "children": [
-                    ]
+                        {
+                            "id": "947bf62f-bccd-41e4-91f6-d82b44f2ca9a",
+                            "type": "subscription",
+                            "name": "CME-MngEnvMCAP168626-bgrozoiu-9",
+                            "children": []
+                        }                    ]
                 }
             ]
         },
@@ -38,11 +41,19 @@
             "type": "managementGroup",
             "name": "Landing Zones",
             "children": [
+
                 {
                     "id": "22a7ad18-2831-41d3-a235-821388094943",
                     "type": "managementGroup",
                     "name": "Corp",
-                    "children": []
+                    "children": [
+                        {
+                            "id": "c0ff9928-cf01-4a46-a30e-3603f25b3cd4",
+                            "type": "subscription",
+                            "name": "CME-MngEnvMCAP168626-bgrozoiu-10",
+                            "children": []
+                        }
+                    ]
                 },
                 {
                     "id": "cc67d716-e695-45e4-bdd2-0d6fd5373c48",
