@@ -43,6 +43,9 @@ function updateStructure ($object, $parentId) {
                 }
             }
         }
+        default {
+            Write-Error "Unknown type: $($object.type)"
+        }
     }
 }
 
