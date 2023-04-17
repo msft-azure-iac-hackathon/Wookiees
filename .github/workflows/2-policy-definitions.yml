@@ -71,4 +71,4 @@ jobs:
           template: modules/policy/definitions/customPolicyDefinitions.bicep
           parameters: >
             modules/policy/definitions/parameters/customPolicyDefinitions.parameters.all.json
-            parTargetManagementGroupId="${{ inputs.Wookiees_MG_Resource_Id }}"
+            parTargetManagementGroupId="af02c79f-50a8-4989-babe-3e752990957c"
