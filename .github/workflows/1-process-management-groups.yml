@@ -83,10 +83,6 @@ jobs:
           # Delete All Management Groups
           $toplevelgroup = Get-AzManagementGroup -GroupName 'af02c79f-50a8-4989-babe-3e752990957c' -Expand -Recurse
           $children = $toplevelgroup.Children
-          $grandchildren = $toplevelgroup.Children.Children
-          foreach ($grandchild in $grandchildren) {
-              Remove-AzManagementGroup -GroupName $grandchild.Name
-          }
           foreach ($child in $children){
               Remove-AzManagementGroup -GroupName $child.Name 
           }
