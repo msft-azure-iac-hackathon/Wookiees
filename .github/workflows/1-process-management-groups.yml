@@ -79,13 +79,7 @@ jobs:
         name: Processing Subscriptions and Management Groups
         id: managementGroups
         run: |
-          # ./modules/managementGroups/process-management-groups-structure.ps1
-          # Delete All Management Groups
-          $toplevelgroup = Get-AzManagementGroup -GroupName 'af02c79f-50a8-4989-babe-3e752990957c' -Expand -Recurse
-          $children = $toplevelgroup.Children
-          foreach ($child in $children){
-              Remove-AzManagementGroup -GroupName $child.Name 
-          }
+          ./modules/managementGroups/process-management-groups-structure.ps1
 
       - shell: pwsh
         name: Reading environment variables
