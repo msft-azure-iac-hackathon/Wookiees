@@ -10,4 +10,4 @@ jobs:
     uses: ./.github/workflows/1-process-management-groups.yml
     with: 
       az_powershell_min_version: ${{ vars.AZ_POWERSHELL_MIN_VERSION }}
-    secrets: inherits
+    secrets: inherit
