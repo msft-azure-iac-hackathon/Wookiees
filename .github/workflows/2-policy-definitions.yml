@@ -45,7 +45,7 @@ jobs:
       az_powershell_min_version: ${{ inputs.az_powershell_min_version }}
       # why set these 2 env vars?  They are not used in this workflow
       top_management_resource_group_id: ${{ inputs.Wookiees_MG_Resource_Id }}
-    
+
     permissions:
       id-token: write
       contents: read
@@ -55,13 +55,13 @@ jobs:
 
       - uses: azure/login@v1
         name: Azure OIDC login
-        with:         
+        with:
           tenant-id: ${{ secrets.TENANT_ID }}
           client-id: ${{ secrets.CLIENT_ID }}
           allow-no-subscriptions: true
           enable-AzPSSession: true
-      
-      - uses: azure/arm-deploy@v1 
+
+      - uses: azure/arm-deploy@v1
         name: Deploy custom policy definitions
         id: customPolicyDefinitions
         with:
@@ -71,4 +71,4 @@ jobs:
           template: modules/policy/definitions/customPolicyDefinitions.bicep
           parameters: >
             modules/policy/definitions/parameters/customPolicyDefinitions.parameters.all.json
-            parTargetManagementGroupId="af02c79f-50a8-4989-babe-3e752990957c"
+            parTargetManagementGroupId="${{ inputs.Wookiees_MG_Resource_Id }}"
