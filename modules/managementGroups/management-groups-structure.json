@@ -4,6 +4,18 @@
     "name": "Wookiees",
     "children": [
         {
+            "id": "947bf62f-bccd-41e4-91f6-d82b44f2ca9a",
+            "type": "subscription",
+            "name": "CME-MngEnvMCAP168626-bgrozoiu-9",
+            "children": []
+        },
+        {
+            "id": "c0ff9928-cf01-4a46-a30e-3603f25b3cd4",
+            "type": "subscription",
+            "name": "CME-MngEnvMCAP168626-bgrozoiu-10",
+            "children": []
+        },
+        {
             "id": "78140d7b-fdb4-4294-b607-f7e4721f57cf",
             "type": "managementGroup",
             "name": "Platform",
@@ -27,12 +39,7 @@
                     "type": "managementGroup",
                     "name": "Management",
                     "children": [
-                        {
-                            "id": "947bf62f-bccd-41e4-91f6-d82b44f2ca9a",
-                            "type": "subscription",
-                            "name": "CME-MngEnvMCAP168626-bgrozoiu-9",
-                            "children": []
-                        }                    ]
+                                         ]
                 }
             ]
         },
@@ -47,12 +54,6 @@
                     "type": "managementGroup",
                     "name": "Corp",
                     "children": [
-                        {
-                            "id": "c0ff9928-cf01-4a46-a30e-3603f25b3cd4",
-                            "type": "subscription",
-                            "name": "CME-MngEnvMCAP168626-bgrozoiu-10",
-                            "children": []
-                        }
                     ]
                 },
                 {
