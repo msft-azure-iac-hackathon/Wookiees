@@ -57,12 +57,12 @@ jobs:
 
       - uses: azure/login@v1
         name: Azure OIDC login
-        with:         
+        with:
           tenant-id: ${{ secrets.TENANT_ID }}
           client-id: ${{ secrets.CLIENT_ID }}
           allow-no-subscriptions: true
           enable-AzPSSession: true
-      
+
       - shell: pwsh
         name: Ensure correct Az module is installed
         run: |
@@ -75,3 +75,9 @@ jobs:
               Install-Module -Name Az -AllowClobber -Force -Scope CurrentUser -Repository PSGallery -MinimumVersion $env:az_powershell_min_version
           }
           az account show
+
+      - shell: pwsh
+        name: Processing Subscriptions and Management Groups
+        id: managementGroups
+        run: |
+          ./modules/managementGroups/process-management-groups-structure.ps1
