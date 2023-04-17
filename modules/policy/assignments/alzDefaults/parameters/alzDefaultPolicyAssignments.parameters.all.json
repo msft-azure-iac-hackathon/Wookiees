@@ -5,41 +5,14 @@
     "parTopLevelManagementGroupPrefix": {
       "value": "alz"
     },
-    "Top_MG_Resource_Id": {
-      "value": "alz"
-    },
-    "Platform_MG_Resource_Id": {
-      "value": "alz-platform"
-    },
-    "Connectivity_MG_Resource_Id": {
-      "value": "alz-connectivity"
-    },
-    "Identity_MG_Resource_Id": {
-      "value": "alz-identity"
-    },
-    "Management_MG_Resource_Id": {
-      "value": "alz-management"
-    },
-    "Landing_Zones_MG_Resource_Id": {
-      "value": "alz-ladingzones"
-    },
-    "Corp_MG_Resource_Id": {
-      "value": "alz-corp"
-    },
-    "Online_MG_Resource_Id": {
-      "value": "alz-online"
-    },
-      "Decommisioned_MG_Resource_Id": {
-      "value": "alz-decommisioned"
-    },
-    "Sandbox_MG_Resource_Id": {
-      "value": "alz-sandbox"
+    "parTopLevelManagementGroupSuffix": {
+      "value": ""
     },
     "parLogAnalyticsWorkSpaceAndAutomationAccountLocation": {
-      "value": "westeurope"
+      "value": "eastus"
     },
     "parLogAnalyticsWorkspaceResourceId": {
-      "value": "/subscriptions/f949745b-4c42-45c4-80bc-ab2d4a31dff7/resourcegroups/rg-alz-logging-001/providers/microsoft.operationalinsights/workspaces/alz-log-analytics"
+      "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/alz-logging/providers/Microsoft.OperationalInsights/workspaces/alz-log-analytics"
     },
     "parLogAnalyticsWorkspaceLogRetentionInDays": {
       "value": "365"
@@ -48,17 +21,25 @@
       "value": "alz-automation-account"
     },
     "parMsDefenderForCloudEmailSecurityContact": {
-      "value": "joedel@microsoft.com"
+      "value": "security_contact@replace_me.com"
     },
     "parDdosProtectionPlanId": {
-      "value": "/subscriptions/573de0a7-29d4-4640-ad7d-05fe883fbae9/resourceGroups/rg-alz-vwan-001/providers/Microsoft.Network/ddosProtectionPlans/alz-ddos-plan"
+      "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg-alz-hub-networking-001/providers/Microsoft.Network/ddosProtectionPlans/alz-ddos-plan"
     },
     "parPrivateDnsResourceGroupId": {
-      "value": "/subscriptions/573de0a7-29d4-4640-ad7d-05fe883fbae9/resourceGroups/rg-alz-vwan-001"
+      "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg-alz-hub-networking-001"
+    },
+    "parDisableAlzDefaultPolicies": {
+      "value": false
+    },
+    "parVmBackupExclusionTagName" : {
+      "value": ""
+    },
+    "parVmBackupExclusionTagValue" : {
+      "value": []
     },
     "parTelemetryOptOut": {
       "value": false
     }
   }
 }
-

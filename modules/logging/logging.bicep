@@ -122,8 +122,7 @@ resource resLogAnalyticsWorkspaceSolutions 'Microsoft.OperationsManagement/solut
 }]
 
 resource resLogAnalyticsLinkedServiceForAutomationAccount 'Microsoft.OperationalInsights/workspaces/linkedServices@2020-08-01' = {
-  parent: resLogAnalyticsWorkspace
-  name: 'Automation'
+  name: '${resLogAnalyticsWorkspace.name}/Automation'
   properties: {
     resourceId: resAutomationAccount.id
   }

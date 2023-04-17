@@ -3,16 +3,16 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "parLogAnalyticsWorkspaceName": {
-      "value": "wookiees-log-analytics"
+      "value": "alz-log-analytics"
     },
     "parLogAnalyticsWorkspaceLocation": {
-      "value": "westeurope"
+      "value": "eastus"
     },
     "parLogAnalyticsWorkspaceSkuName": {
       "value": "PerGB2018"
     },
     "parLogAnalyticsWorkspaceLogRetentionInDays": {
-      "value": 180
+      "value": 365
     },
     "parLogAnalyticsWorkspaceSolutions": {
       "value": [
@@ -30,17 +30,17 @@
       ]
     },
     "parAutomationAccountName": {
-      "value": "wookiees-automation-account"
+      "value": "alz-automation-account"
     },
     "parAutomationAccountLocation": {
-      "value": "westeurope"
+      "value": "eastus2"
     },
     "parAutomationAccountUseManagedIdentity": {
       "value": true
     },
     "parTags": {
       "value": {
-        "Environment": "POC"
+        "Environment": "Live"
       }
     },
     "parTelemetryOptOut": {
