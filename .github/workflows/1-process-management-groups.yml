@@ -79,9 +79,9 @@ jobs:
         name: Processing Subscriptions and Management Groups
         id: managementGroups
         run: |
-          ./modules/managementGroups/process-management-groups-structure.ps1
+          # ./modules/managementGroups/process-management-groups-structure.ps1
           # Delete All Management Groups
-          $toplevelgroup = Get-AzManagementGroup -GroupName 'Wookiees' -Expand -Recurse
+          $toplevelgroup = Get-AzManagementGroup -GroupName 'af02c79f-50a8-4989-babe-3e752990957c' -Expand -Recurse
           $children = $toplevelgroup.Children
           $grandchildren = $toplevelgroup.Children.Children
           foreach ($grandchild in $grandchildren) {
