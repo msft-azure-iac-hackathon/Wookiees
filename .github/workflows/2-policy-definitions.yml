@@ -76,10 +76,3 @@ jobs:
           parameters: >
             modules/policy/definitions/parameters/customPolicyDefinitions.parameters.all.json
             parTargetManagementGroupId="${{ inputs.Top_Management_Group_Id }}"
-      - name: Azure CLI script
-        uses: azure/CLI@v1
-        with:
-          inlineScript: |
-            az logout
-            az cache purge
-            az account clear
