@@ -46,6 +46,5 @@ jobs:
           template: orchestration/mgDiagSettingsAll/mgDiagSettingsAll.bicep
           parameters: >
             orchestration/mgDiagSettingsAll/parameters/mgDiagSettingsAll.parameters.all.json
-            parTopLevelManagementGroupId=${{ inputs.Top_Management_Group_Id }}
             parTopLevelManagementGroupPrefix=${{ inputs.TopLevelManagementGroupPrefix }}
             parLogAnalyticsWorkspaceResourceId=${{ inputs.LogAnalyticsWorkspaceResourceId }}
