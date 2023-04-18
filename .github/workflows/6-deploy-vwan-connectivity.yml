@@ -6,10 +6,10 @@ on:
       Subscription_Id:
         required: true
         type: string
-    # outputs:
-    #   LogAnalyticsWorkspaceId:
-    #     description: 'Resource ID of the Wookiees Management Group'
-    #     value: ${{ jobs.deploy-central-logging.outputs.LogAnalyticsWorkspaceId }}
+    outputs:
+      VirtualHubId:
+        description: '...'
+        value: ${{ jobs.deploy-vwan-connectivity.outputs.VirtualHubId }}
 
 jobs:
   deploy-vwan-connectivity:
@@ -53,11 +53,5 @@ jobs:
           parameters: >
             modules/vwanConnectivity/parameters/vwanConnectivity.parameters.all.json
             parVirtualNetworkIdToLink='/subscriptions/${{ inputs.Subscription_Id }}/resourceGroups/${{ steps.DeployVwanRg.outputs.outResourceGroupName }}/providers/Microsoft.Network/virtualNetworks/wks-hub-westeurope'
-      
-      - name: Azure CLI script
-        uses: azure/CLI@v1
-        with:
-          inlineScript: |
-            az logout
-            az cache purge
-            az account clear
+    outputs:
+      VirtualHubId: ${{ steps.DeployVwan.outputs.outVirtualHubId[0] }}

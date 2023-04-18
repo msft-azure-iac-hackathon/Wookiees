@@ -59,3 +59,12 @@ jobs:
     with:
       Subscription_Id: '947bf62f-bccd-41e4-91f6-d82b44f2ca9a'
     secrets: inherit
+  
+  deploy-hub-peered-spoke:
+    uses: ./.github/workflows/7-deploy-hub-peered-spoke.yml
+    needs: [deploy-vwan-connectivity, process-management-groups]
+    with:
+      Subscription_Id: 'c0ff9928-cf01-4a46-a30e-3603f25b3cd4'
+      ManagementGroupId: ${{ needs.process-management-groups.outputs.Top_Management_Group_Id }}
+      VirtualNetworkId: ${{ needs.deploy-vwan-connectivity.outputs.VirtualHubId }}
+    secrets: inherit
