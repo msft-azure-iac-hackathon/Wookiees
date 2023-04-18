@@ -52,3 +52,10 @@ jobs:
   #     Top_Management_Group_Id: ${{ needs.process-management-groups.outputs.Top_Management_Group_Id }}
   #     LogAnalyticsWorkspaceResourceId: ${{ needs.deploy-logging.outputs.LogAnalyticsWorkspaceId }}
   #   secrets: inherit
+
+  deploy-vwan-connectivity:
+    uses: ./.github/workflows/6-deploy-vwan-connectivity.yml
+    needs: process-management-groups
+    with:
+      Subscription_Id: '947bf62f-bccd-41e4-91f6-d82b44f2ca9a'
+    secrets: inherit

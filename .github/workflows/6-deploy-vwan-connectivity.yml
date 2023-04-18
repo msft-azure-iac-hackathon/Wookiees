@@ -1,0 +1,55 @@
+name: Deploy VWAN Connectivity network
+
+on:
+  workflow_call:
+    inputs:
+      Subscription_Id:
+        required: true
+        type: string
+    # outputs:
+    #   LogAnalyticsWorkspaceId:
+    #     description: 'Resource ID of the Wookiees Management Group'
+    #     value: ${{ jobs.deploy-central-logging.outputs.LogAnalyticsWorkspaceId }}
+
+jobs:
+  deploy-vwan-connectivity:
+    runs-on: [self-hosted, linux]
+    name: Deploy VWAN Connectivity network
+    
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: azure/login@v1
+        name: Azure OIDC login
+        with:         
+          tenant-id: ${{ secrets.TENANT_ID }}
+          client-id: ${{ secrets.CLIENT_ID }}
+          subscription-id: ${{ inputs.Subscription_Id }}
+          enable-AzPSSession: true
+
+
+      - uses: azure/arm-deploy@v1 
+        name: Deploy logging
+        id: DeployVwanRg
+        with:
+            scope: subscription
+            region: westeurope
+            subscriptionId: ${{ inputs.Subscription_Id }}
+            template: modules/resourceGroup/resourceGroup.bicep
+            parameters: modules/vwanConnectivity/parameters/resourceGroup.parameters.all.json
+
+      - uses: azure/arm-deploy@v1 
+        name: Deploy logging
+        id: DeployVwan
+        with:
+          scope: resourcegroup
+          region: westeurope
+          resourceGroupName: ${{ steps.DeployVwanRg.outputs.outResourceGroupName }}
+          template: modules/vwanConnectivity/vwanConnectivity.bicep
+          parameters: >
+            modules/logging/parameters/vwanConnectivity.parameters.all.json
+      

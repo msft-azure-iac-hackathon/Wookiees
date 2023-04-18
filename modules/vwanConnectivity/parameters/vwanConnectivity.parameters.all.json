@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "parLocation": {
-      "value": "eastus"
+      "value": "westeurope"
     },
     "parCompanyPrefix": {
       "value": "alz"
@@ -18,7 +18,7 @@
       "value": true
     },
     "parVirtualWanName": {
-      "value": "alz-vwan-eastus"
+      "value": "alz-vwan-westeurope"
     },
     "parVirtualWanHubName": {
       "value": "alz-vhub"
@@ -36,7 +36,7 @@
       "value": []
     },
     "parAzFirewallPoliciesName": {
-      "value": "alz-azfwpolicy-eastus"
+      "value": "alz-azfwpolicy-westeurope"
     },
     "parVirtualWanHubs": {
       "value": [
@@ -45,7 +45,7 @@
           "parExpressRouteGatewayEnabled": true,
           "parAzFirewallEnabled": true,
           "parVirtualHubAddressPrefix": "10.100.0.0/23",
-          "parHubLocation": "eastus",
+          "parHubLocation": "westeurope",
           "parHubRoutingPreference": "ExpressRoute",
           "parVirtualRouterAutoScaleConfiguration": 2
         }
@@ -68,10 +68,10 @@
     },
     "parPrivateDnsZones": {
       "value": [
-        "privatelink.xxxxxx.azmk8s.io", // Replace xxxxxx with target region (i.e. eastus)
-        "privatelink.xxxxxx.batch.azure.com", // Replace xxxxxx with target region (i.e. eastus)
-        "privatelink.xxxxxx.kusto.windows.net", // Replace xxxxxx with target region (i.e. eastus)
-        "privatelink.xxxxxx.backup.windowsazure.com", // Replace xxxxxx with target region geo code (i.e. for eastus, the geo code is eus)
+        "privatelink.westeurope.azmk8s.io", // Replace xxxxxx with target region (i.e. eastus)
+        "privatelink.westeurope.batch.azure.com", // Replace xxxxxx with target region (i.e. eastus)
+        "privatelink.westeurope.kusto.windows.net", // Replace xxxxxx with target region (i.e. eastus)
+        "privatelink.westeurope.backup.windowsazure.com", // Replace xxxxxx with target region geo code (i.e. for eastus, the geo code is eus)
         "privatelink.adf.azure.com",
         "privatelink.afs.azure.net",
         "privatelink.agentsvc.azure-automation.net",
