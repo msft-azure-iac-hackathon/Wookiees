@@ -10,6 +10,7 @@ on:
 jobs:
   deploy-custom-rbac-role-definitions:
     runs-on: [self-hosted, linux]
+    name: Process Custom RBAC role definitions
     
     permissions:
       id-token: write

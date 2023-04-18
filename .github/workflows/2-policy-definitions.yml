@@ -43,6 +43,7 @@ on:
 jobs:
   deploy-policy-definitions-and-assignments:
     runs-on: [self-hosted, linux]
+    name: Process Policy Definitions and Assignments
 
     env:
       az_powershell_min_version: ${{ inputs.az_powershell_min_version }}

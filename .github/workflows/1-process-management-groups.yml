@@ -44,6 +44,7 @@ on:
 jobs:
   deploy-management-groups:
     runs-on: [self-hosted, linux]
+    name: Deploy Management Groups
 
     env:
       az_powershell_min_version: ${{ inputs.az_powershell_min_version }}

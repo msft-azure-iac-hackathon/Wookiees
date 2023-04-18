@@ -15,7 +15,7 @@ on:
 
 jobs:
   deploy-management-group-diagnostics:
-    name: Deply management group diagnostics
+    name: Deploy MG diagnostics
     runs-on: [self-hosted, linux]
     
     permissions:
