@@ -8,6 +8,9 @@ metadata description = 'Orchestration module that helps enable Diagnostic Settin
 @maxLength(10)
 param parTopLevelManagementGroupPrefix string = 'alz'
 
+@sys.description('id of Toplevel managementgroup')
+param parTopLevelManagementGroupId string
+
 @sys.description('Optional suffix for the management group hierarchy. This suffix will be appended to management group names/IDs. Include a preceding dash if required. Example: -suffix')
 @maxLength(10)
 param parTopLevelManagementGroupSuffix string = ''
@@ -28,7 +31,7 @@ param parLandingZoneMgConfidentialEnable bool = false
 param parTelemetryOptOut bool = false
 
 var varMgIds = {
-  intRoot: '${parTopLevelManagementGroupPrefix}${parTopLevelManagementGroupSuffix}'
+  intRoot: parTopLevelManagementGroupId
   platform: '${parTopLevelManagementGroupPrefix}-platform${parTopLevelManagementGroupSuffix}'
   platformManagement: '${parTopLevelManagementGroupPrefix}-platform-management${parTopLevelManagementGroupSuffix}'
   platformConnectivity: '${parTopLevelManagementGroupPrefix}-platform-connectivity${parTopLevelManagementGroupSuffix}'

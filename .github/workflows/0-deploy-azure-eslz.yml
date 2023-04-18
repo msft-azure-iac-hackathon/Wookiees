@@ -48,6 +48,6 @@ jobs:
     needs: [deploy-logging, process-management-groups]
     with:
       TopLevelManagementGroupPrefix: 'wookiees'
-      ManagementGroupId: ${{ needs.process-management-groups.outputs.Top_Management_Group_Id }}
+      Top_Management_Group_Id: ${{ needs.process-management-groups.outputs.Top_Management_Group_Id }}
       LogAnalyticsWorkspaceResourceId: ${{ needs.deploy-logging.outputs.LogAnalyticsWorkspaceId }}
     secrets: inherit

@@ -6,7 +6,7 @@ on:
       TopLevelManagementGroupPrefix:
         required: true
         type: string
-      ManagementGroupId:
+      Top_Management_Group_Id:
         required: true
         type: string
       LogAnalyticsWorkspaceResourceId:
@@ -39,9 +39,10 @@ jobs:
         with:
           scope: managementgroup
           region: westeurope
-          managementGroupId: ${{ inputs.ManagementGroupId }}
+          managementGroupId: ${{ inputs.Top_Management_Group_Id }}
           template: orchestration/mgDiagSettingsAll/mgDiagSettingsAll.bicep
           parameters: >
             orchestration/mgDiagSettingsAll/parameters/mgDiagSettingsAll.parameters.all.json
+            parTopLevelManagementGroupId=${{ inputs.Top_Management_Group_Id }}
             parTopLevelManagementGroupPrefix=${{ inputs.TopLevelManagementGroupPrefix }}
             parLogAnalyticsWorkspaceResourceId=${{ inputs.LogAnalyticsWorkspaceResourceId }}
