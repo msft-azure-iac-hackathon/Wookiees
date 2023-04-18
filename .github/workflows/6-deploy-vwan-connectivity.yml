@@ -53,3 +53,10 @@ jobs:
           parameters: >
             modules/vwanConnectivity/parameters/vwanConnectivity.parameters.all.json
       
+      - name: Azure CLI script
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az logout
+            az cache purge
+            az account clear
