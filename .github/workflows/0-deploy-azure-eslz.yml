@@ -43,12 +43,12 @@ jobs:
       Subscription_Id: '947bf62f-bccd-41e4-91f6-d82b44f2ca9a'
     secrets: inherit
 
-  deploy-mgdiagnostic:
-    uses: ./.github/workflows/5-deploy-management-group-diagnostics.yml
-    needs: [deploy-logging, process-management-groups]
-    with:
-      Subscription_Id: '947bf62f-bccd-41e4-91f6-d82b44f2ca9a'
-      TopLevelManagementGroupPrefix: 'wookiees'
-      Top_Management_Group_Id: ${{ needs.process-management-groups.outputs.Top_Management_Group_Id }}
-      LogAnalyticsWorkspaceResourceId: ${{ needs.deploy-logging.outputs.LogAnalyticsWorkspaceId }}
-    secrets: inherit
+  # deploy-mgdiagnostic:
+  #   uses: ./.github/workflows/5-deploy-management-group-diagnostics.yml
+  #   needs: [deploy-logging, process-management-groups]
+  #   with:
+  #     Subscription_Id: '947bf62f-bccd-41e4-91f6-d82b44f2ca9a'
+  #     TopLevelManagementGroupPrefix: 'wookiees'
+  #     Top_Management_Group_Id: ${{ needs.process-management-groups.outputs.Top_Management_Group_Id }}
+  #     LogAnalyticsWorkspaceResourceId: ${{ needs.deploy-logging.outputs.LogAnalyticsWorkspaceId }}
+  #   secrets: inherit
