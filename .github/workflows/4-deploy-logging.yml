@@ -41,7 +41,7 @@ jobs:
           template: ARMtemplates/resourceGroup.json
           parameters: modules/logging/parameters/resourceGroup.parameters.json
 
-      - uses: azure/arm-deploy@v1 
+      - uses: azure/arm-deploy@v1
         name: Deploy logging
         id: deployCentralLogging
         with:
@@ -49,7 +49,9 @@ jobs:
           region: westeurope
           resourceGroupName: ${{ steps.resourceGroupLogging.outputs.resourceGroupName }}
           template: modules/logging/logging.bicep
-          parameters: modules/logging/parameters/logging.parameters.all.json
+          parameters: >
+            modules/logging/parameters/logging.parameters.all.json
+            parLogAnalyticsWorkspaceName="wookies-log-analytics"
     outputs:
       LogAnalyticsWorkspaceId: ${{ steps.deployCentralLogging.outputs.outLogAnalyticsWorkspaceId }}
       
