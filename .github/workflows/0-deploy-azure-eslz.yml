@@ -55,7 +55,7 @@ jobs:
 
   deploy-vwan-connectivity:
     uses: ./.github/workflows/6-deploy-vwan-connectivity.yml
-    needs: process-management-groups
+    needs: deploy-logging
     with:
       Subscription_Id: '947bf62f-bccd-41e4-91f6-d82b44f2ca9a'
     secrets: inherit
