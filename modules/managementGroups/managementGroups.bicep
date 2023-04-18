@@ -88,7 +88,7 @@ var varSandboxMg = {
   displayName: 'Sandbox'
 }
 
-// Decomissioned Management Group
+// Decommissioned Management Group
 var varDecommissionedMg = {
   name: '${parTopLevelManagementGroupPrefix}-decommissioned${parTopLevelManagementGroupSuffix}'
   displayName: 'Decommissioned'
