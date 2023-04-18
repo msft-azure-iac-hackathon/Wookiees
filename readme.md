@@ -1,0 +1,1 @@
+[![Deploy Azure Enterprise Scale Landing Zone](https://github.com/msft-azure-iac-hackathon/Wookiees/actions/workflows/0-deploy-azure-eslz.yml/badge.svg)](https://github.com/msft-azure-iac-hackathon/Wookiees/actions/workflows/0-deploy-azure-eslz.yml)
