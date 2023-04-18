@@ -31,15 +31,15 @@ jobs:
           subscription-id: ${{ inputs.Subscription_Id }}
           enable-AzPSSession: true
 
-      - uses: azure/arm-deploy@v1
+      - uses: azure/arm-deploy@v1 
         name: Create the Resource Group for logging
         id: resourceGroupLogging
         with:
-          scope: subscription
-          region: westeurope
-          subscriptionId: ${{ inputs.Subscription_Id }}
-          template: ARMtemplates/resourceGroup.json
-          parameters: modules/logging/parameters/resourceGroup.parameters.json
+            scope: subscription
+            region: westeurope
+            subscriptionId: ${{ inputs.Subscription_Id }}
+            template: modules/resourceGroup/resourceGroup.bicep
+            parameters: modules/logging/parameters/resourceGroup.parameters.all.json
 
       - uses: azure/arm-deploy@v1
         name: Deploy logging
@@ -47,7 +47,7 @@ jobs:
         with:
           scope: resourcegroup
           region: westeurope
-          resourceGroupName: ${{ steps.resourceGroupLogging.outputs.resourceGroupName }}
+          resourceGroupName: ${{ steps.resourceGroupLogging.outputs.outResourceGroupName }}
           template: modules/logging/logging.bicep
           parameters: >
             modules/logging/parameters/logging.parameters.all.json
