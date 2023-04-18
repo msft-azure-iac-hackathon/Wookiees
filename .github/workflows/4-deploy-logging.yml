@@ -52,3 +52,4 @@ jobs:
           parameters: modules/logging/parameters/logging.parameters.all.json
     outputs:
       LogAnalyticsWorkspaceId: ${{ steps.deployCentralLogging.outputs.outLogAnalyticsWorkspaceId }}
+      

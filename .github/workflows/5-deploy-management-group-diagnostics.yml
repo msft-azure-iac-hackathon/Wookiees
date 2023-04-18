@@ -3,6 +3,9 @@ name: Deploy Management Group Diagnostics
 on:
   workflow_call:
     inputs:
+      Subscription_Id:
+        required: true
+        type: string
       TopLevelManagementGroupPrefix:
         required: true
         type: string
@@ -27,10 +30,10 @@ jobs:
 
       - uses: azure/login@v1
         name: Azure OIDC login
-        with:
+        with:         
           tenant-id: ${{ secrets.TENANT_ID }}
           client-id: ${{ secrets.CLIENT_ID }}
-          allow-no-subscriptions: true
+          subscription-id: ${{ inputs.Subscription_Id }}
           enable-AzPSSession: true
 
       - uses: azure/arm-deploy@v1 
