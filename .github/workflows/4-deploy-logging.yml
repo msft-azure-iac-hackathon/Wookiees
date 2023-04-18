@@ -15,7 +15,7 @@ jobs:
   deploy-central-logging:
     runs-on: [self-hosted, linux]
     name: Deploy central logging
-    
+
     permissions:
       id-token: write
       contents: read
@@ -25,7 +25,7 @@ jobs:
 
       - uses: azure/login@v1
         name: Azure OIDC login
-        with:         
+        with:
           tenant-id: ${{ secrets.TENANT_ID }}
           client-id: ${{ secrets.CLIENT_ID }}
           subscription-id: ${{ inputs.Subscription_Id }}
@@ -51,7 +51,7 @@ jobs:
           template: modules/logging/logging.bicep
           parameters: >
             modules/logging/parameters/logging.parameters.all.json
-            parLogAnalyticsWorkspaceName="wookiees-log-analytics"
+            parLogAnalyticsWorkspaceName="alz-log-analytics"
+
     outputs:
       LogAnalyticsWorkspaceId: ${{ steps.deployCentralLogging.outputs.outLogAnalyticsWorkspaceId }}
-      
