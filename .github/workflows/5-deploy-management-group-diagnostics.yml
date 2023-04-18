@@ -3,10 +3,10 @@ name: Deploy Management Group Diagnostics
 on:
   workflow_call:
     inputs:
-      Subscription_Id:
+      TopLevelManagementGroupPrefix:
         required: true
         type: string
-      TopLevelManagementGroupPrefix:
+      ManagementGroupId:
         required: true
         type: string
       LogAnalyticsWorkspaceResourceId:
@@ -27,31 +27,21 @@ jobs:
 
       - uses: azure/login@v1
         name: Azure OIDC login
-        with:         
+        with:
           tenant-id: ${{ secrets.TENANT_ID }}
           client-id: ${{ secrets.CLIENT_ID }}
-          subscription-id: ${{ inputs.Subscription_Id }}
+          allow-no-subscriptions: true
           enable-AzPSSession: true
-
-      - uses: azure/arm-deploy@v1
-        name: Create the Resource Group for logging
-        id: resourceGroupLogging
-        with:
-          scope: subscription
-          region: westeurope
-          subscriptionId: ${{ inputs.Subscription_Id }}
-          template: ARMtemplates/resourceGroup.json
-          parameters: modules/logging/parameters/resourceGroup.parameters.json
 
       - uses: azure/arm-deploy@v1 
         name: Deploy management group diagnostics
         id: deployMGDiagnosticsLogging
         with:
-          scope: resourcegroup
+          scope: managementgroup
           region: westeurope
-          resourceGroupName: ${{ steps.resourceGroupLogging.outputs.resourceGroupName }}
+          managementGroupId: ${{ inputs.ManagementGroupId }}
           template: orchestration/mgDiagSettingsAll/mgDiagSettingsAll.bicep
           parameters: >
-            orchestration/mgDiagSettingsAll/mgDiagSettingsAll.parameters.all.json
+            orchestration/mgDiagSettingsAll/parameters/mgDiagSettingsAll.parameters.all.json
             parTopLevelManagementGroupPrefix=${{ inputs.TopLevelManagementGroupPrefix }}
-            parLogAnalyticsWorkspaceResourceId=${{ inputs.LogAnalyticsWorkspaceResourceId}}
+            parLogAnalyticsWorkspaceResourceId=${{ inputs.LogAnalyticsWorkspaceResourceId }}
