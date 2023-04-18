@@ -64,9 +64,9 @@
             ]
         },
         {
-            "id": "wookiees-decommisioned",
+            "id": "wookiees-decommissioned",
             "type": "managementGroup",
-            "name": "Decommisioned",
+            "name": "Decommissioned",
             "children": []
         },
         {
