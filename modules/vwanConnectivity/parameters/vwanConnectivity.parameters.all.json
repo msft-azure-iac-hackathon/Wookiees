@@ -6,7 +6,7 @@
       "value": "westeurope"
     },
     "parCompanyPrefix": {
-      "value": "alz"
+      "value": "wks"
     },
     "parAzFirewallTier": {
       "value": "Standard"
@@ -18,25 +18,25 @@
       "value": true
     },
     "parVirtualWanName": {
-      "value": "alz-vwan-westeurope"
+      "value": "wks-vwan-westeurope"
     },
     "parVirtualWanHubName": {
-      "value": "alz-vhub"
+      "value": "wks-vhub"
     },
     "parVpnGatewayName": {
-      "value": "alz-vpngw"
+      "value": "wks-vpngw"
     },
     "parExpressRouteGatewayName": {
-      "value": "alz-ergw"
+      "value": "wks-ergw"
     },
     "parAzFirewallName": {
-      "value": "alz-fw"
+      "value": "wks-fw"
     },
     "parAzFirewallAvailabilityZones": {
       "value": []
     },
     "parAzFirewallPoliciesName": {
-      "value": "alz-azfwpolicy-westeurope"
+      "value": "wks-azfwpolicy-westeurope"
     },
     "parVirtualWanHubs": {
       "value": [
@@ -61,7 +61,7 @@
       "value": true
     },
     "parDdosPlanName": {
-      "value": "alz-ddos-plan"
+      "value": "wks-ddos-plan"
     },
     "parPrivateDnsZonesEnabled": {
       "value": true
@@ -138,7 +138,7 @@
       ]
     },
     "parVirtualNetworkIdToLink": {
-      "value": "/subscriptions/947bf62f-bccd-41e4-91f6-d82b44f2ca9a/resourceGroups/HUB_Networking_POC/providers/Microsoft.Network/virtualNetworks/alz-hub-westeurope"
+      "value": "/subscriptions/947bf62f-bccd-41e4-91f6-d82b44f2ca9a/resourceGroups/wks-rg-vwanconnectivity/providers/Microsoft.Network/virtualNetworks/wks-hub-westeurope"
     },
     "parTags": {
       "value": {

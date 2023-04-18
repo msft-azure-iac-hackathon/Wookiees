@@ -6,7 +6,7 @@
       "value": "westeurope"
     },
     "parResourceGroupName": {
-      "value": "alz-rg-vwanconnectivity"
+      "value": "wks-rg-vwanconnectivity"
     },
     "parTags": {
       "value": {
