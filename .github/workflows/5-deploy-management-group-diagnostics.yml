@@ -50,8 +50,8 @@ jobs:
           scope: resourcegroup
           region: westeurope
           resourceGroupName: ${{ steps.resourceGroupLogging.outputs.resourceGroupName }}
-          template: orchestration/mgDiagSettingsAll.bicep
+          template: orchestration/mgDiagSettingsAll/mgDiagSettingsAll.bicep
           parameters: >
-            orchestration/mgDiagSettingsAll.parameters.all.json
+            orchestration/mgDiagSettingsAll/mgDiagSettingsAll.parameters.all.json
             parTopLevelManagementGroupPrefix=${{ inputs.TopLevelManagementGroupPrefix }}
             parLogAnalyticsWorkspaceResourceId=${{ inputs.LogAnalyticsWorkspaceResourceId}}
