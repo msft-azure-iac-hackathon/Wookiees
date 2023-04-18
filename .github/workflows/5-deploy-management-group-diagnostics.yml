@@ -14,7 +14,8 @@ on:
         type: string
 
 jobs:
-  deploy-central-logging:
+  deploy-management-group-diagnostics:
+    name: Deply management group diagnostics
     runs-on: [self-hosted, linux]
     
     permissions:
