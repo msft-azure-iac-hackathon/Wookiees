@@ -51,7 +51,7 @@ jobs:
           template: modules/logging/logging.bicep
           parameters: >
             modules/logging/parameters/logging.parameters.all.json
-            parLogAnalyticsWorkspaceName="alz-log-analytics"
+            parLogAnalyticsWorkspaceName="wookiees-log-analytics"
     outputs:
       LogAnalyticsWorkspaceId: ${{ steps.deployCentralLogging.outputs.outLogAnalyticsWorkspaceId }}
       
