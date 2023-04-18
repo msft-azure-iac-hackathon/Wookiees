@@ -52,6 +52,6 @@ jobs:
           template: modules/vwanConnectivity/vwanConnectivity.bicep
           parameters: >
             modules/vwanConnectivity/parameters/vwanConnectivity.parameters.all.json
-            parVirtualNetworkIdToLink='/subscriptions/${{ inputs.Subscription_Id }}/resourceGroups/${{ steps.DeployVwanRg.outputs.outResourceGroupName }}/providers/Microsoft.Network/virtualNetworks/wks-hub-westeurope'
+            parVirtualNetworkIdToLink=/subscriptions/${{ inputs.Subscription_Id }}/resourceGroups/${{ steps.DeployVwanRg.outputs.outResourceGroupName }}/providers/Microsoft.Network/virtualNetworks/wks-hub-westeurope
     outputs:
       VirtualHubId: ${{ steps.DeployVwan.outputs.outVirtualHubId[0] }}
