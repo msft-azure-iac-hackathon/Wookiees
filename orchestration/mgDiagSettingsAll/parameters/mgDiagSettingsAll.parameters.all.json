@@ -8,20 +8,8 @@
     "parTopLevelManagementGroupSuffix": {
       "value": ""
     },
-    "parLandingZoneMgAlzDefaultsEnable": {
-      "value": true
-    },
-    "parLandingZoneMgConfidentialEnable": {
-      "value": false
-    },
     "parLogAnalyticsWorkspaceResourceId": {
       "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/alz-logging/providers/microsoft.operationalinsights/workspaces/alz-log-analytics"
-    },
-    "parLandingZoneMgChildren": {
-      "value": []
-    },
-    "parTelemetryOptOut": {
-      "value": false
     }
   }
 }
