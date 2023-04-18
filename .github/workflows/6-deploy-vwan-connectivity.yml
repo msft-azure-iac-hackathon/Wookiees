@@ -33,7 +33,7 @@ jobs:
 
 
       - uses: azure/arm-deploy@v1 
-        name: Deploy logging
+        name: Deploy vwan resource group
         id: DeployVwanRg
         with:
             scope: subscription
@@ -43,7 +43,7 @@ jobs:
             parameters: modules/vwanConnectivity/parameters/resourceGroup.parameters.all.json
 
       - uses: azure/arm-deploy@v1 
-        name: Deploy logging
+        name: Deploy vwan
         id: DeployVwan
         with:
           scope: resourcegroup
