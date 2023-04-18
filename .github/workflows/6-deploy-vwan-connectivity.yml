@@ -51,5 +51,5 @@ jobs:
           resourceGroupName: ${{ steps.DeployVwanRg.outputs.outResourceGroupName }}
           template: modules/vwanConnectivity/vwanConnectivity.bicep
           parameters: >
-            modules/logging/parameters/vwanConnectivity.parameters.all.json
+            modules/vwanConnectivity/parameters/vwanConnectivity.parameters.all.json
       
