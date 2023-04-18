@@ -1,4 +1,4 @@
-name: Deploy Central Logging
+name: Deploy Management Group Diagnostics
 
 on:
   workflow_call:
@@ -6,10 +6,12 @@ on:
       Subscription_Id:
         required: true
         type: string
-    outputs:
-      LogAnalyticsWorkspaceId:
-        description: 'Resource ID of the Wookiees Management Group'
-        value: ${{ jobs.deploy-central-logging.outputs.LogAnalyticsWorkspaceId }}
+      TopLevelManagementGroupPrefix:
+        required: true
+        type: string
+      LogAnalyticsWorkspaceResourceId:
+        required: true
+        type: string
 
 jobs:
   deploy-central-logging:
@@ -41,14 +43,14 @@ jobs:
           parameters: modules/logging/parameters/resourceGroup.parameters.json
 
       - uses: azure/arm-deploy@v1 
-        name: Deploy logging
-        id: deployCentralLogging
+        name: Deploy management group diagnostics
+        id: deployMGDiagnosticsLogging
         with:
           scope: resourcegroup
           region: westeurope
           resourceGroupName: ${{ steps.resourceGroupLogging.outputs.resourceGroupName }}
-          template: modules/logging/logging.bicep
-          parameters: modules/logging/parameters/logging.parameters.all.json
-    outputs:
-      LogAnalyticsWorkspaceId: ${{ steps.deployCentralLogging.outputs.outLogAnalyticsWorkspaceId }}
-      
+          template: orchestration/mgDiagSettingsAll.bicep
+          parameters: >
+            orchestration/mgDiagSettingsAll.parameters.all.json
+            parTopLevelManagementGroupPrefix=${{ inputs.TopLevelManagementGroupPrefix }}
+            parLogAnalyticsWorkspaceResourceId=${{ inputs.LogAnalyticsWorkspaceResourceId}}

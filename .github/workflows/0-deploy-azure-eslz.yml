@@ -43,3 +43,12 @@ jobs:
     with:
       Subscription_Id: '947bf62f-bccd-41e4-91f6-d82b44f2ca9a'
     secrets: inherit
+
+  deploy-mgdiagnostic:
+    uses: ./.github/workflows/5-deploy-management-group-diagnostics.yml
+    needs: [deploy-logging]
+    with:
+      Subscription_Id: '947bf62f-bccd-41e4-91f6-d82b44f2ca9a'
+      TopLevelManagementGroupPrefix: 'wookiees'
+      LogAnalyticsWorkspaceResourceId: ${{ needs.deploy-logging.outputs.outLogAnalyticsWorkspaceId }}
+    secrets: inherit
