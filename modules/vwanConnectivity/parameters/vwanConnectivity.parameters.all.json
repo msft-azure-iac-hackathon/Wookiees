@@ -138,7 +138,7 @@
       ]
     },
     "parVirtualNetworkIdToLink": {
-      "value": "/subscriptions/947bf62f-bccd-41e4-91f6-d82b44f2ca9a/resourceGroups/wks-rg-vwanconnectivity/providers/Microsoft.Network/virtualNetworks/wks-hub-westeurope"
+      "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/HUB_Networking_POC/providers/Microsoft.Network/virtualNetworks/alz-hub-eastus"
     },
     "parTags": {
       "value": {
