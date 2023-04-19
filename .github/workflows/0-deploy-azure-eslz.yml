@@ -51,7 +51,7 @@ jobs:
   #   with:
   #     Subscription_Id: '947bf62f-bccd-41e4-91f6-d82b44f2ca9a'
   #     TopLevelManagementGroupPrefix: 'wookiees'
-  #     Top_Management_Group_Id: ${{ needs.process-management-groups.outputs.Top_Management_Group_Id }}
+  #     Top_Management_Group_Id: ${{ needs.process-management-groups.outputs.Wookiees_MG_Resource_Id }}
   #     LogAnalyticsWorkspaceResourceId: ${{ needs.deploy-logging.outputs.LogAnalyticsWorkspaceId }}
   #   secrets: inherit
 
