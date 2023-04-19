@@ -25,7 +25,5 @@ jobs:
   deploy-app:
     needs: deploy-function
     uses: ./.github/workflows/challenge-3-deploy-app.yml
-    with: 
-      Subscription_Id: '947bf62f-bccd-41e4-91f6-d82b44f2ca9a'
     secrets: inherit
     
