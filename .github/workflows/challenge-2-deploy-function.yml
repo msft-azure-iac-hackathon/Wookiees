@@ -52,7 +52,6 @@ jobs:
           resourceGroupName: ${{ inputs.ResourceGroup }}
           template: custommodules/components/storageaccount.bicep
           parameters: >
-            custommodules/components/resourceGroup.parameters.all.json
             parStorageAccountName=MyStorageAccount
             
       - uses: azure/arm-deploy@v1 
