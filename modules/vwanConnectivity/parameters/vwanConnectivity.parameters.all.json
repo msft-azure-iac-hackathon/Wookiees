@@ -64,7 +64,7 @@
       "value": "wks-ddos-plan"
     },
     "parPrivateDnsZonesEnabled": {
-      "value": true
+      "value": false
     },
     "parPrivateDnsZones": {
       "value": [
