@@ -1,0 +1,42 @@
+name: Deploy KeyVault
+
+on:
+  workflow_call:
+    inputs:
+      Subscription_Id:
+        required: true
+        type: string
+    # outputs:
+    #   LogAnalyticsWorkspaceId:
+    #     description: 'Resource ID of the Wookiees Management Group'
+    #     value: ${{ jobs.deploy-central-logging.outputs.LogAnalyticsWorkspaceId }}
+
+jobs:
+  deploy-vault:
+    runs-on: [self-hosted, linux]
+    name: Deploy KeyVault
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: azure/login@v1
+        name: Azure OIDC login
+        with:
+          tenant-id: ${{ secrets.TENANT_ID }}
+          client-id: ${{ secrets.CLIENT_ID }}
+          subscription-id: ${{ inputs.Subscription_Id }}
+          enable-AzPSSession: true
+
+    #   - uses: azure/arm-deploy@v1 
+    #     name: Create the Resource Group for logging
+    #     id: resourceGroupLogging
+    #     with:
+    #         scope: subscription
+    #         region: westeurope
+    #         subscriptionId: ${{ inputs.Subscription_Id }}
+    #         template: modules/resourceGroup/resourceGroup.bicep
+    #         parameters: modules/logging/parameters/resourceGroup.parameters.all.json
