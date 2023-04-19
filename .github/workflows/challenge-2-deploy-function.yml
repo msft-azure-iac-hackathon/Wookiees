@@ -6,6 +6,9 @@ on:
       Subscription_Id:
         required: true
         type: string
+      ResourceGroup:
+        required: true
+        type: string
 
 jobs:
   deploy-function:
@@ -27,6 +30,18 @@ jobs:
           client-id: ${{ secrets.CLIENT_ID }}
           subscription-id: ${{ inputs.Subscription_Id }}
           enable-AzPSSession: true
+      
+      - uses: azure/arm-deploy@v1 
+        name: Create or get the Resource Group for function
+        id: resourceGroupKey
+        with:
+          scope: subscription
+          region: westeurope
+          subscriptionId: ${{ inputs.Subscription_Id }}
+          template: custommodules/components/resourceGroup.bicep
+          parameters: >
+            custommodules/components/resourceGroup.parameters.all.json
+            parResourceGroupName= ${{ inputs.ResourceGroup }}
 
       - uses: azure/arm-deploy@v1 
         name: Create function
@@ -34,7 +49,7 @@ jobs:
         with:
           scope: resourcegroup
           region: westeurope
-          # resourceGroupName: ${{ steps.resourceGroupKeyvault.outputs.outResourceGroupName }}
+          resourceGroupName: ${{ inputs.ResourceGroup }}
           template: custommodules/components/function.bicep
           parameters: >
             name=MyFunction

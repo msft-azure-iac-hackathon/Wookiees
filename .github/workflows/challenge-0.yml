@@ -11,6 +11,7 @@ jobs:
       # az_powershell_min_version: ${{ vars.AZ_POWERSHELL_MIN_VERSION }}
       Subscription_Id: '947bf62f-bccd-41e4-91f6-d82b44f2ca9a'
       SecretName: 'energy-price-url-secret'
+      ResourceGroup: 'rg-challenge'
     secrets:
       TENANT_ID: ${{ secrets.TENANT_ID }}
       CLIENT_ID: ${{ secrets.CLIENT_ID }}
@@ -20,6 +21,7 @@ jobs:
     uses: ./.github/workflows/challenge-2-deploy-function.yml
     with: 
       Subscription_Id: '947bf62f-bccd-41e4-91f6-d82b44f2ca9a'
+      ResourceGroup: 'rg-challenge'
     secrets: inherit
 
   deploy-app:
