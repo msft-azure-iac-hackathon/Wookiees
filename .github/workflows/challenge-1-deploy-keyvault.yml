@@ -6,14 +6,26 @@ on:
       Subscription_Id:
         required: true
         type: string
+      SecretName:
+        required: true
+        type: string
+    secrets:
+      SecretValue:
+        required: true
+      TENANT_ID:
+        required: true
+      CLIENT_ID:
+        required: true
+    
     # outputs:
     #   LogAnalyticsWorkspaceId:
-    #     description: 'Resource ID of the Wookiees Management Group'
+    #     description: Resource ID of the Wookiees Management Group
     #     value: ${{ jobs.deploy-central-logging.outputs.LogAnalyticsWorkspaceId }}
 
 jobs:
   deploy-vault:
     runs-on: [self-hosted, linux]
+    environment: wookiees
     name: Deploy KeyVault
 
     permissions:
@@ -39,7 +51,9 @@ jobs:
           region: westeurope
           subscriptionId: ${{ inputs.Subscription_Id }}
           template: custommodules/components/resourceGroup.bicep
-          parameters: custommodules/components/resourceGroup.parameters.all.json
+          parameters: >
+            custommodules/components/resourceGroup.parameters.all.json
+            parResourceGroupName=challenge-rg
 
       - uses: azure/arm-deploy@v1 
         name: Create the Keyvault and secret
@@ -50,8 +64,8 @@ jobs:
           resourceGroupName: ${{ steps.resourceGroupKeyvault.outputs.outResourceGroupName }}
           template: custommodules/components/vault.bicep
           parameters: >
-            parKeyVaultName='challenge-kv'
-            parSecretName='energy-price-url-secret'
-            parSecretValue='bla'
-            parUami1Id='bla'
-            parUami2Id='bla'
+            parKeyVaultName=challenge-kv
+            parSecretName=${{ inputs.SecretName }}
+            parSecretValue=${{ secrets.SecretValue }}
+            parSecretWriterUserPrincipalName=VaultSecretWriter
+            parSecretReaderUserPrincipalName=VaultSecretReader

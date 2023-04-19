@@ -10,6 +10,8 @@ jobs:
     with: 
       # az_powershell_min_version: ${{ vars.AZ_POWERSHELL_MIN_VERSION }}
       Subscription_Id: '947bf62f-bccd-41e4-91f6-d82b44f2ca9a'
-    secrets: inherit
-
-  
+      SecretName: 'energy-price-url-secret'
+    secrets:
+      TENANT_ID: ${{ secrets.TENANT_ID }}
+      CLIENT_ID: ${{ secrets.CLIENT_ID }}
+      SecretValue: ${{ secrets.ENERGY_PRICE_URL }}
