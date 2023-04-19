@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  process-management-groups:
+  deploy-keyvault:
     uses: ./.github/workflows/challenge-1-deploy-keyvault.yml
     with: 
       # az_powershell_min_version: ${{ vars.AZ_POWERSHELL_MIN_VERSION }}
