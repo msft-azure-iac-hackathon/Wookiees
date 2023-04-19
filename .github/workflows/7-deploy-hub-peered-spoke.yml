@@ -51,7 +51,7 @@ jobs:
         name: Deploy Hub peered spoke
         id: DeployHubPeeredSpoke
         with:
-          scope: managementGroup
+          scope: managementgroup
           region: westeurope
           managementGroupId: ${{ inputs.ManagementGroupId }}
           template: orchestration/hubPeeredSpoke/hubPeeredSpoke.bicep
