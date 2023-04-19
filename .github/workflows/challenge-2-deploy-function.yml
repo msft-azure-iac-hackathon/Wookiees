@@ -1,4 +1,4 @@
-name: Deploy KeyVault
+name: Deploy Function
 
 on:
   workflow_call:
@@ -8,10 +8,10 @@ on:
         type: string
 
 jobs:
-  deploy-vault:
+  deploy-function:
     runs-on: [self-hosted, linux]
     environment: wookiees
-    name: Deploy KeyVault
+    name: Deploy Function
 
     permissions:
       id-token: write
