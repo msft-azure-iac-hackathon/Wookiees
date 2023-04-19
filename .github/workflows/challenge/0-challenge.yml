@@ -1,70 +1,14 @@
-name: Deploy Azure Enterprise Scale Landing Zone
+name: Challenge day 3 - energy prices
 on:
   push:
-      branches: [ main ]
+      branches: [ ** ]
   workflow_dispatch:
 
 jobs:
   process-management-groups:
-    uses: ./.github/workflows/1-process-management-groups.yml
+    uses: ./.github/workflows/challenge/1-deploy-keyvault.yml
     with: 
       az_powershell_min_version: ${{ vars.AZ_POWERSHELL_MIN_VERSION }}
     secrets: inherit
 
-  policy-definitions:
-    uses: ./.github/workflows/2-policy-definitions.yml
-    needs: process-management-groups
-    with: 
-      az_powershell_min_version: ${{ vars.AZ_POWERSHELL_MIN_VERSION }}
-      Wookiees_MG_Resource_Id: ${{ needs.process-management-groups.outputs.Wookiees_MG_Resource_Id }}
-      Platform_MG_Resource_Id: ${{ needs.process-management-groups.outputs.Platform_MG_Resource_Id }}
-      Connectivity_MG_Resource_Id: ${{ needs.process-management-groups.outputs.Connectivity_MG_Resource_Id }}
-      Identity_MG_Resource_Id: ${{ needs.process-management-groups.outputs.Identity_MG_Resource_Id }}
-      Management_MG_Resource_Id: ${{ needs.process-management-groups.outputs.Management_MG_Resource_Id }}
-      Landing_Zones_MG_Resource_Id: ${{ needs.process-management-groups.outputs.Landing_Zones_MG_Resource_Id }}
-      Corp_MG_Resource_Id: ${{ needs.process-management-groups.outputs.Corp_MG_Resource_Id }}
-      Online_MG_Resource_Id: ${{ needs.process-management-groups.outputs.Online_MG_Resource_Id }}
-      Decommissioned_MG_Resource_Id: ${{ needs.process-management-groups.outputs.Decommissioned_MG_Resource_Id }}
-      Sandbox_MG_Resource_Id: ${{ needs.process-management-groups.outputs.Sandbox_MG_Resource_Id }}
-      Top_Management_Group_Id: ${{ needs.process-management-groups.outputs.Top_Management_Group_Id }}
-    secrets: inherit
-
-  custom-rbac-role-definitions:
-    uses: ./.github/workflows/3-custom-rbac-role-definitions.yml
-    needs: process-management-groups
-    with:
-      Top_Management_Group_Id: ${{ needs.process-management-groups.outputs.Top_Management_Group_Id }}
-    secrets: inherit
-
-  deploy-logging:
-    uses: ./.github/workflows/4-deploy-logging.yml
-    needs: process-management-groups
-    with:
-      Subscription_Id: '947bf62f-bccd-41e4-91f6-d82b44f2ca9a'
-    secrets: inherit
-
-  # deploy-mgdiagnostic:
-  #   uses: ./.github/workflows/5-deploy-management-group-diagnostics.yml
-  #   needs: [deploy-logging, process-management-groups]
-  #   with:
-  #     Subscription_Id: '947bf62f-bccd-41e4-91f6-d82b44f2ca9a'
-  #     TopLevelManagementGroupPrefix: 'wookiees'
-  #     Top_Management_Group_Id: ${{ needs.process-management-groups.outputs.Top_Management_Group_Id }}
-  #     LogAnalyticsWorkspaceResourceId: ${{ needs.deploy-logging.outputs.LogAnalyticsWorkspaceId }}
-  #   secrets: inherit
-
-  deploy-vwan-connectivity:
-    uses: ./.github/workflows/6-deploy-vwan-connectivity.yml
-    needs: deploy-logging
-    with:
-      Subscription_Id: '947bf62f-bccd-41e4-91f6-d82b44f2ca9a'
-    secrets: inherit
   
-  deploy-hub-peered-spoke:
-    uses: ./.github/workflows/7-deploy-hub-peered-spoke.yml
-    needs: [deploy-vwan-connectivity, process-management-groups]
-    with:
-      Subscription_Id: 'c0ff9928-cf01-4a46-a30e-3603f25b3cd4'
-      ManagementGroupId: ${{ needs.process-management-groups.outputs.Top_Management_Group_Id }}
-      VirtualNetworkId: ${{ needs.deploy-vwan-connectivity.outputs.VirtualHubId }}
-    secrets: inherit
