@@ -103,9 +103,9 @@ resource hostingPlan 'Microsoft.Web/serverfarms@2022-09-01' = {
     // numberOfWorkers: numberOfWorkers
     reserved: true
   }
-  // sku: {
-  //   tier: sku
-  //   name: skuCode
-  // }
+  sku: {
+    tier: 'Dynamic'
+    name: 'Y1'
+  }
   dependsOn: []
 }
