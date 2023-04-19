@@ -3,7 +3,7 @@ on:
   push:
       branches: [ main ]
       paths:
-        - 'modules'
+        - 'modules/**'
   workflow_dispatch:
 
 jobs:
