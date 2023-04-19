@@ -1,14 +1,14 @@
-param keyVaultName string
-param secretName string
+param parKeyVaultName string
+param parSecretName string
 @secure()
-param secretValue string
-param uami1Id string
-param uami2Id string
+param parSecretValue string
+param parUami1Id string
+param parUami2Id string
 
 param location string = resourceGroup().location
 
 resource keyVault 'Microsoft.KeyVault/vaults@2021-06-01-preview' = {
-  name: keyVaultName
+  name: parKeyVaultName
   location: location
   
   properties: {
@@ -22,22 +22,22 @@ resource keyVault 'Microsoft.KeyVault/vaults@2021-06-01-preview' = {
 
 resource secret 'Microsoft.KeyVault/vaults/secrets@2021-06-01-preview' = {
   parent: keyVault
-  name: secretName
+  name: parSecretName
 
   properties: {
-    value: secretValue
+    value: parSecretValue
   }
 }
 
 resource uami1AccessPolicy 'Microsoft.KeyVault/vaults/accessPolicies@2021-06-01-preview' = {
   parent: keyVault
-  name: uami1Id
+  name: parUami1Id
 
   properties: {
     accessPolicies: [
       {
         tenantId: subscription().tenantId
-        objectId: uami1Id
+        objectId: parUami1Id
         permissions: {
           secrets: [
             'get'
@@ -50,12 +50,12 @@ resource uami1AccessPolicy 'Microsoft.KeyVault/vaults/accessPolicies@2021-06-01-
 
 resource uami2AccessPolicy 'Microsoft.KeyVault/vaults/accessPolicies@2021-06-01-preview' = {
   parent: keyVault
-  name: uami2Id
+  name: parUami2Id
   properties: {
     accessPolicies: [
       {
         tenantId: subscription().tenantId
-        objectId: uami2Id
+        objectId: parUami2Id
         permissions: {
           secrets: [
             'get'
