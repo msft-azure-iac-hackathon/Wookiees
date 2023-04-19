@@ -64,7 +64,7 @@
       "value": "wks-ddos-plan"
     },
     "parPrivateDnsZonesEnabled": {
-      "value": false
+      "value": true
     },
     "parPrivateDnsZones": {
       "value": [
@@ -138,7 +138,7 @@
       ]
     },
     "parVirtualNetworkIdToLink": {
-      "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/HUB_Networking_POC/providers/Microsoft.Network/virtualNetworks/alz-hub-eastus"
+      "value": ""
     },
     "parTags": {
       "value": {
