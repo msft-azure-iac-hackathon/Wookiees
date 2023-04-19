@@ -59,4 +59,4 @@ jobs:
             orchestration/hubPeeredSpoke/parameters/hubPeeredSpoke.parameters.all.json
             parTopLevelManagementGroupPrefix='wks'
             parPeeredVnetSubscriptionId=${{ inputs.Subscription_Id }}
-            parHubVirtualNetworkId= ${{ inputs.VirtualNetworkId }}
+      # parHubVirtualNetworkId= ${{ inputs.VirtualNetworkId }}
