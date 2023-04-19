@@ -1,6 +1,7 @@
+targetScope='resourceGroup'
 // param subscriptionId string
 param name string
-param location string
+param location string = resourceGroup().location
 param hostingPlanName string
 // param serverFarmResourceGroup string
 // param use32BitWorkerProcess bool
