@@ -53,7 +53,7 @@ jobs:
         with:
           scope: managementgroup
           region: westeurope
-          managementGroupId: ${{ inputs.ManagementGroupId }}
+          managementgroupid: ${{ inputs.ManagementGroupId }}
           template: orchestration/hubPeeredSpoke/hubPeeredSpoke.bicep
           parameters: >
             orchestration/hubPeeredSpoke/parameters/hubPeeredSpoke.parameters.all.json
