@@ -1,7 +1,7 @@
 name: Challenge day 3 - energy prices
 on:
   push:
-      branches: [ ** ]
+      # branches: [ ** ]
   workflow_dispatch:
 
 jobs:
