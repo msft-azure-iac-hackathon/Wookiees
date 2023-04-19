@@ -7,6 +7,7 @@ param hostingPlanName string
 // param use32BitWorkerProcess bool
 // param ftpsState string
 param storageAccountName string
+param storageAccountId string
 // param linuxFxVersion string
 // param sku string
 // param skuCode string
@@ -33,11 +34,11 @@ resource name_resource 'Microsoft.Web/sites@2022-09-01' = {
         }
         {
           name: 'AzureWebJobsStorage'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${storageAccountName};AccountKey=${listKeys(storageAccount.id, '2019-06-01').keys[0].value};EndpointSuffix=core.windows.net'
+          value: 'DefaultEndpointsProtocol=https;AccountName=${storageAccountName};AccountKey=${listKeys(storageAccountId, '2019-06-01').keys[0].value};EndpointSuffix=core.windows.net'
         }
         {
           name: 'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${storageAccountName};AccountKey=${listKeys(storageAccount.id, '2019-06-01').keys[0].value};EndpointSuffix=core.windows.net'
+          value: 'DefaultEndpointsProtocol=https;AccountName=${storageAccountName};AccountKey=${listKeys(storageAccountId, '2019-06-01').keys[0].value};EndpointSuffix=core.windows.net'
         }
         {
           name: 'WEBSITE_CONTENTSHARE'
@@ -107,19 +108,4 @@ resource hostingPlan 'Microsoft.Web/serverfarms@2022-09-01' = {
   //   name: skuCode
   // }
   dependsOn: []
-}
-
-resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
-  name: storageAccountName
-  location: location
-  tags: {}
-  sku: {
-    name: 'Standard_LRS'
-  }
-  properties: {
-    supportsHttpsTrafficOnly: true
-    minimumTlsVersion: 'TLS1_2'
-    defaultToOAuthAuthentication: true
-  }
-  kind:'Storage'
 }

@@ -65,4 +65,5 @@ jobs:
           parameters: >
             name=MyFunction
             hostingPlanName=MyHostingPlan
+            storageAccountId=${{ steps.storageAccountKey.outputs.outStorageAccountId }}            
             storageAccountName=${{ steps.storageAccountKey.outputs.outStorageAccountName }}
