@@ -41,7 +41,7 @@ jobs:
           template: custommodules/components/resourceGroup.bicep
           parameters: >
             custommodules/components/resourceGroup.parameters.all.json
-            parResourceGroupName= ${{ inputs.ResourceGroup }}
+            parResourceGroupName=${{ inputs.ResourceGroup }}
 
       - uses: azure/arm-deploy@v1 
         name: Create function

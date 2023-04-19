@@ -47,7 +47,7 @@ jobs:
           enable-AzPSSession: true
 
       - uses: azure/arm-deploy@v1 
-        name: Create the Resource Group for keyvault
+        name: Create or get the Resource Group for keyvault
         id: resourceGroupKeyvault
         with:
           scope: subscription
@@ -56,7 +56,7 @@ jobs:
           template: custommodules/components/resourceGroup.bicep
           parameters: >
             custommodules/components/resourceGroup.parameters.all.json
-            parResourceGroupName= ${{ inputs.ResourceGroup }}
+            parResourceGroupName=${{ inputs.ResourceGroup }}
 
       - uses: azure/arm-deploy@v1 
         name: Create the Keyvault and secret
