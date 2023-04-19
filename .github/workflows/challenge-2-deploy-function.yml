@@ -52,7 +52,7 @@ jobs:
           resourceGroupName: ${{ inputs.ResourceGroup }}
           template: custommodules/components/storageaccount.bicep
           parameters: >
-            parStorageAccountName=funstorageaccount
+            parStorageAccountName=dldhsflhjflsdsk
             
       - uses: azure/arm-deploy@v1 
         name: Create function
