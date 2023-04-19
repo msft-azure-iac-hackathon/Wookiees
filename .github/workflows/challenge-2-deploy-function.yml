@@ -1,0 +1,42 @@
+name: Deploy KeyVault
+
+on:
+  workflow_call:
+    inputs:
+      Subscription_Id:
+        required: true
+        type: string
+
+jobs:
+  deploy-vault:
+    runs-on: [self-hosted, linux]
+    environment: wookiees
+    name: Deploy KeyVault
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: azure/login@v1
+        name: Azure OIDC login
+        with:
+          tenant-id: ${{ secrets.TENANT_ID }}
+          client-id: ${{ secrets.CLIENT_ID }}
+          subscription-id: ${{ inputs.Subscription_Id }}
+          enable-AzPSSession: true
+
+      - uses: azure/arm-deploy@v1 
+        name: Create function
+        id: function
+        with:
+          scope: resourcegroup
+          region: westeurope
+          # resourceGroupName: ${{ steps.resourceGroupKeyvault.outputs.outResourceGroupName }}
+          template: custommodules/components/function.bicep
+          parameters: >
+            name=MyFunction
+            hostingPlanName=MyHostingPlan
+            storageAccountName=MyStorageAccount
