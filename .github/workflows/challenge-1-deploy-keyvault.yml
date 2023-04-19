@@ -35,11 +35,11 @@ jobs:
         name: Create the Resource Group for keyvault
         id: resourceGroupKeyvault
         with:
-            scope: subscription
-            region: westeurope
-            subscriptionId: ${{ inputs.Subscription_Id }}
-            template: custommodules/components/resourceGroup.bicep
-            parameters: custommodules/components/resourceGroup.parameters.all.json
+          scope: subscription
+          region: westeurope
+          subscriptionId: ${{ inputs.Subscription_Id }}
+          template: custommodules/components/resourceGroup.bicep
+          parameters: custommodules/components/resourceGroup.parameters.all.json
 
       - uses: azure/arm-deploy@v1 
         name: Create the Keyvault and secret
@@ -48,10 +48,10 @@ jobs:
           scope: resourcegroup
           region: westeurope
           resourceGroupName: ${{ steps.resourceGroupKeyvault.outputs.outResourceGroupName }}
-            template: custommodules/components/vault.bicep
-            parameters: >
-              parKeyVaultName='challenge-kv'
-              parSecretName='energy-price-url-secret'
-              parSecretValue='bla'
-              parUami1Id='bla'
-              parUami2Id='bla'
+          template: custommodules/components/vault.bicep
+          parameters: >
+            parKeyVaultName='challenge-kv'
+            parSecretName='energy-price-url-secret'
+            parSecretValue='bla'
+            parUami1Id='bla'
+            parUami2Id='bla'
