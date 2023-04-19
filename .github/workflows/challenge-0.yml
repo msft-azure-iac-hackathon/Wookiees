@@ -9,6 +9,7 @@ jobs:
     uses: ./.github/workflows/challenge-1-deploy-keyvault.yml
     with: 
       az_powershell_min_version: ${{ vars.AZ_POWERSHELL_MIN_VERSION }}
+      Subscription_Id: '947bf62f-bccd-41e4-91f6-d82b44f2ca9a'
     secrets: inherit
 
   
