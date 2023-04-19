@@ -42,16 +42,28 @@ jobs:
           parameters: >
             custommodules/components/resourceGroup.parameters.all.json
             parResourceGroupName=${{ inputs.ResourceGroup }}
-
+      
+      - uses: azure/arm-deploy@v1 
+        name: Create or get the Storage Account for function
+        id: storageAccountKey
+        with:
+          scope: resourcegroup
+          region: westeurope
+          resourceGroupName: ${{ inputs.ResourceGroup }}
+          template: custommodules/components/storageaccount.bicep
+          parameters: >
+            custommodules/components/resourceGroup.parameters.all.json
+            parStorageAccountName=MyStorageAccount
+            
       - uses: azure/arm-deploy@v1 
         name: Create function
         id: function
         with:
           scope: resourcegroup
           region: westeurope
-          resourceGroupName: ${{ inputs.ResourceGroup }}
+          resourceGroupName: ${{ steps.resourceGroupKey.outputs.outResourceGroupName}}
           template: custommodules/components/function.bicep
           parameters: >
             name=MyFunction
             hostingPlanName=MyHostingPlan
-            storageAccountName=MyStorageAccount
+            storageAccountName=${{ steps.storageAccountKey.outputs.outStorageAccountName }}
